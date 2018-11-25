@@ -21,6 +21,7 @@
                     <input id="password" type="password" name="user[password]" placeholder="密码" required="required" pattern=".{6,20}" maxlength="20" class="form-control">
                     <label class="control-label">密码最少6位</label>
                 </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <div class="form-group">
                     <button id="submit" type="submit" class="btn btn-lg btn-primary btn-block">立即注册</button>
                 </div>

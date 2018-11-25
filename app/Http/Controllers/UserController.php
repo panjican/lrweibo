@@ -83,6 +83,7 @@ class UserController extends Controller
         }
 
         Session::put('username', $user['name']);
+        Session::put('userid', $userId);
         return view('user.home');
 
     }
@@ -91,5 +92,42 @@ class UserController extends Controller
     public function  logout() {
         Session::forget('username');
         return redirect('user/index')->with('success', '登出成功');
+    }
+
+    //主页
+    public function home(Request $request) {
+        $userid = Session::get('userid');
+        $weiboListKey = 'archives:userid:'.$userid;
+
+        $weiboList = Redis::lrange($weiboListKey, 0 , -1);
+        $arr = array();
+        if (!empty($weiboList)) {
+            foreach ($weiboList as $postId) {
+                $arr[] = Redis::hgetall('archives:id:'.$postId);
+            }
+        }
+
+        return view('user.home', ['archives' => $arr]);
+    }
+
+    //发布微博
+    public function saveweibo(Request $request) {
+        $weibo = $request->input('weibo');
+        $userid = $request->input('userid');
+        $username = Session::get('username');
+        $time = time();
+        $weiboId = Redis::incr('global:archives');
+        $weiboKey = 'archives:id:'.$weiboId;
+        Redis::hmset($weiboKey, [
+            'userid'=> $userid,
+            'username'=> $username,
+            'post_time'=> $time,
+            'content'=> $weibo,
+            'post_id' => $weiboId
+            ]);
+        $weiboListKey = 'archives:userid:'.$userid;
+        Redis::lpush($weiboListKey, $weiboId);
+
+        return redirect('user/home');
     }
 }

@@ -5,11 +5,11 @@
 @section('content')
     <div class="container">
         <div class="user_nav pull-right">
-            <a type="button" class="btn btn-default" role="button" href="{{url('user/toregister')}}">登录</a>
-            <a type="button" class="btn btn-default" role="button" href="{{url('user/tologin')}}">注册</a>
+            <a type="button" class="btn btn-default" role="button" href="{{url('user/tologin')}}">登录</a>
+            <a type="button" class="btn btn-default" role="button" href="{{url('user/toregister')}}">注册</a>
         </div>
         <div class="header">
-            <h3 class="text-muted"><a style="vertical-align: bottom;" href="{{url('user/index')}}">简单微博系统</a></h3>
+            <h3 class="text-muted"><a style="vertical-align: bottom;" href="{{url('user/index')}}">LR微博系统</a></h3>
         </div>
 
 

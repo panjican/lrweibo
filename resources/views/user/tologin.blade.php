@@ -14,6 +14,7 @@
                 <h2 class="form-signin-heading">用户登录</h2>
                 <input type="text" class="form-control" name="user[name]" placeholder="用户名" required="" autofocus="">
                 <input type="password" class="form-control" name="user[password]" placeholder="密码" required="">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <button class="btn btn-lg btn-primary btn-block" type="submit">立即登录</button>
             </form>
             <div class="alert noaccount center-block">

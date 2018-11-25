@@ -48,7 +48,15 @@ Route::any('user/register', [
 Route::any('user/login', [
     'uses' => 'UserController@login'
 ]);
+
+
 Route::any('user/logout', [
     'uses' => 'UserController@logout'
+]);
+Route::any('user/home', [
+    'uses' => 'UserController@home'
+]);
+Route::any('user/saveweibo', [
+    'uses' => 'UserController@saveweibo'
 ]);
 
