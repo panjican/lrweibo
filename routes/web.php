@@ -24,3 +24,31 @@ Route::any('test/info', [
 	'uses' => 'TestController@info',
 	'as'  => 'testinfo'
 	]);
+
+Route::any('redis/test', [
+    'uses' => 'RedisController@testRedis'
+]);
+
+
+
+
+Route::any('user/index', [
+    'uses' => 'UserController@index'
+]);
+Route::any('user/toregister', [
+    'uses' => 'UserController@toregister'
+]);
+Route::any('user/tologin', [
+    'uses' => 'UserController@tologin'
+]);
+
+Route::any('user/register', [
+    'uses' => 'UserController@register'
+]);
+Route::any('user/login', [
+    'uses' => 'UserController@login'
+]);
+Route::any('user/logout', [
+    'uses' => 'UserController@logout'
+]);
+

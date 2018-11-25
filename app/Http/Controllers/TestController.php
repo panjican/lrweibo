@@ -8,6 +8,6 @@ class TestController extends Controller
 {
     //测试方法
     public function info() {
-    	return 'this is a test!';
+    	return view('user.index');
     }
 }
