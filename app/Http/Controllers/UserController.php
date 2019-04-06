@@ -84,7 +84,7 @@ class UserController extends Controller
 
         Session::put('username', $user['name']);
         Session::put('userid', $userId);
-        return view('user.home');
+        return redirect('user/home');
 
     }
 

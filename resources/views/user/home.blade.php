@@ -47,6 +47,8 @@
                     </div>
                 @endif
             @endforeach
+        @else
+            <div class="media-body" >这个家伙很懒，还未发布消息哦~</div>
         @endif
     </div>
 @stop
